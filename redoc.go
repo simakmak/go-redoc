@@ -3,7 +3,6 @@ package redoc
 import (
 	"bytes"
 	"errors"
-	"io/ioutil"
 	"net/http"
 	"strings"
 	"text/template"
@@ -58,19 +57,9 @@ func (r Redoc) Handler() http.HandlerFunc {
 		panic(err)
 	}
 
-	specFile := r.SpecFile
-	if specFile == "" {
-		panic(ErrSpecNotFound)
-	}
-
 	specPath := r.SpecPath
 	if specPath == "" {
 		specPath = "/openapi.json"
-	}
-
-	spec, err := ioutil.ReadFile(specFile)
-	if err != nil {
-		panic(err)
 	}
 
 	docsPath := r.DocsPath
@@ -83,7 +72,7 @@ func (r Redoc) Handler() http.HandlerFunc {
 		if strings.HasSuffix(req.URL.Path, r.SpecPath) {
 			w.WriteHeader(200)
 			w.Header().Set("content-type", "application/json")
-			w.Write(spec)
+			w.Write([]byte(r.SpecFile))
 			return
 		}
 
