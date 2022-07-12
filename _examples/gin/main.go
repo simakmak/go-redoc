@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/mvrilo/go-redoc"
-	ginredoc "github.com/mvrilo/go-redoc/gin"
+	"github.com/simakmak/go-redoc"
+	ginredoc "github.com/simakmak/go-redoc/gin"
 )
 
 func main() {

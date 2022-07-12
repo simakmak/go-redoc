@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/mvrilo/go-redoc"
+	"github.com/simakmak/go-redoc"
 )
 
 func main() {
